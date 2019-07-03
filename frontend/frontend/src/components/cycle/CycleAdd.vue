@@ -1,8 +1,9 @@
 <template>
     <div>
+      <!-- @submit.prevent="regist" -->
       <Nav></Nav>
-       <form class="form-horizontal" @submit.prevent="regist">
-  <fieldset>
+  <fieldset>    
+    <form class="form-horizontal" @submit.prevent="regist">
     <div id="legend">
       <legend class="">Register</legend>
     </div>
@@ -64,22 +65,24 @@
     <div class="control-group">
       <!-- Button -->
       <div class="controls">
-        <input type="submit" class="btn btn-success" @click="regist" value="등록">
+        <input type="submit" class="btn btn-success" value="등록">
+     <!-- @click="regist" -->
       </div>
     </div>
+    </form>
   </fieldset>
-</form>
+
       <Footer></Footer>
     </div>
 </template>
 <script>
 import Nav from '@/components/common/Nav.vue'
 import Footer from'@/components/common/Footer.vue'
-import CycleModify from'@/components/cycle/CycleModify.vue'
+
 import { rename } from 'fs';
 import axios from 'axios'
 import {store} from '../../store'
-import CycleList from '../cycle/CycleList'
+
 
 export default {
     components:{
@@ -115,21 +118,19 @@ export default {
 
         axios.post(`${this.context}`, JSON.stringify(data),{headers : headers})
         .then(res=>{
-          alert('에러나지말아주세요')
-          alert(`save() SUCCESS: ${res.data[0].brand}`)
+          // alert('에러나지말아주세요')
+          // alert(`save() SUCCESS: ${res.data[0].brand}`)
             store.state.list = res.data
-            this.$router.push("/CycleList")       
+             
+            this.$router.push("/CycleList")   
+             
         })
         .catch(e=>{alert('ERROR')
         })
-
-      
-      },
-
+      }
     }
-    
 
-}
+   }
 </script>
 
 <style>

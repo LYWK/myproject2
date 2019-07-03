@@ -58,13 +58,14 @@ public class CycleController {
             CycleDTO cust  = modelMapper.map(s, CycleDTO.class);
             list.add(cust);
         }
-
+       
+        System.out.println("regist test");
        // map.put("result", "SUCCESS");
         return list;
     }
 
     @GetMapping("")
-    public Iterable<CycleDTO>  CycleList(){
+    public List<CycleDTO>  CycleList(){
         System.out.println("======findAll()====");
 
         Iterable<Cycle> entities = repo.findAll();

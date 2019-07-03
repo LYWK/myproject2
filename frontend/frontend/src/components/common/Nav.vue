@@ -1,7 +1,7 @@
 <template>
     <div>
       <nav class="navbar navbar-default">
-        <img src="">
+        <img src="@/assets/dd.png">
         <div class="container-fluid">
         <div class="navbar-header">
         <a class="navbar-brand" href="#">Home</a>  

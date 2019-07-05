@@ -13,15 +13,14 @@
       </tr>
       </tbody>
       <tbody>
-       <tr v-for="item in CycleList" v-bind:key="item">
-            <td>{{item.modelName}}</td>
+       <tr v-for="item in CycleList" v-bind:key="item.id">
+            <td @click="detail(item)">{{item.modelName}}</td>
             <td>{{item.sort}}</td>
             <td>{{item.price}}</td>
             <td>{{item.brand}}</td>
             <td>{{item.gear}}</td>
             <td>{{item.rent}}</td>
-            <td>삭제</td>
-            <td @click="update(item)" style="color:red" >정보수정</td> 
+             
       </tr>
   
       </tbody>
@@ -41,6 +40,7 @@ export default {
         context : 'http://localhost:9000/cycles'
      }
    },
+   
   components: {
     Nav,
     Footer
@@ -48,6 +48,7 @@ export default {
   created(){
         //  this.CycleList = store.state.list
         //  alert('store')
+      
       axios.get(`${this.context}`).then((response)=>{
              console.log(response);
             this.CycleList = response.data;
@@ -56,19 +57,21 @@ export default {
      
        },
   methods: {
-       update(item){
-               alert("디테일화면으로")
+    
+       detail(item){
+            alert("상세화면으로")
             store.state.id = item.id;
-            store.state.userid = item.userid;
-            store.state.title = item.title;
-            store.state.content = item.content;
-            store.state.regdate = item.regdate;
-            store.state.view = item.view;
-            alert(store.state.title);
-            this.$router.push('/CycleModify') 
+            store.state.modelName = item.modelName;
+            store.state.sort = item.sort;
+            store.state.price = item.price;
+            store.state.brand = item.brand;
+            store.state.gear = item.gear;
+            store.state.rent = item.rent;
+            alert(store.state.modelName);
+            this.$router.push('/CycleDetail') 
 
        }
-      
+     // this.$router.link(-1);
    }
   }
 

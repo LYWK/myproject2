@@ -11,7 +11,7 @@ import lombok.Data;
 @Data @Component @Lazy
 public class CycleDTO {
     
-       private String modelName,
+       private String id, modelName,
                             sort,
                             price,
                             brand,

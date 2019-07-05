@@ -6,7 +6,14 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state : {
-        list : []
+            id : '',
+            modelName : '',
+            sort : '',
+            price: '',
+            brand : '',
+            gear : '',
+            rent: ''
+            
     },
     mutations: {
 

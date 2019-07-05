@@ -5,7 +5,7 @@
   <fieldset>    
     <form class="form-horizontal" @submit.prevent="regist">
     <div id="legend">
-      <legend class="">Register</legend>
+      <legend class="">자전거등록</legend>
     </div>
     <div class="control-group">
       <!-- modelname -->
@@ -21,7 +21,7 @@
       <label class="control-label" for="sort">분류</label>
       <div class="controls">
         <input type="text" id="sort" name="sort" placeholder="" v-model="sort" class="input-xlarge">
-        <p class="help-block">Please provide your E-mail</p>
+      
       </div>
     </div>
  
@@ -30,7 +30,7 @@
       <label class="control-label" for="price">대여가격</label>
       <div class="controls">
         <input type="text" id="price" name="price" placeholder="" v-model="price" class="input-xlarge">
-        <p class="help-block">Password should be at least 4 characters</p>
+        
       </div>
     </div>
  
@@ -39,7 +39,7 @@
       <label class="control-label"  for="brand">브랜드</label>
       <div class="controls">
         <input type="text" id="brand" name="brand" placeholder="" v-model="brand" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
+     
       </div>
     </div>
 
@@ -48,7 +48,7 @@
       <label class="control-label"  for="gear">기어수</label>
       <div class="controls">
         <input type="text" id="gear" name="gear" placeholder="" v-model="gear" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
+       
       </div>
     </div>
 
@@ -58,7 +58,7 @@
       <label class="control-label"  for="rent">대여유무</label>
       <div class="controls">
         <input type="text" id="rent" name="rent" placeholder="" v-model="rent" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
+     
       </div>
     </div>
  

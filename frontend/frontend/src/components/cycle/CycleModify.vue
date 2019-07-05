@@ -1,83 +1,109 @@
 <template>
     <div>
       <Nav></Nav>
-       <form class="form-horizontal" action='' method="POST">
-  <fieldset>
-    <div id="legend">
-      <legend class="">Register</legend>
-    </div>
-    <div class="control-group">
-      <!-- modelname -->
-      <label class="control-label"  for="modelname">모델명</label>
-      <div class="controls">
-        <input type="text" id="modelname" name="modelname" placeholder="" class="input-xlarge">
-        
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- sort -->
-      <label class="control-label" for="sort">분류</label>
-      <div class="controls">
-        <input type="text" id="sort" name="sort" placeholder="" class="input-xlarge">
-        <p class="help-block">Please provide your E-mail</p>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- price-->
-      <label class="control-label" for="price">대여가격</label>
-      <div class="controls">
-        <input type="text" id="price" name="price" placeholder="" class="input-xlarge">
-        <p class="help-block">Password should be at least 4 characters</p>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- brand -->
-      <label class="control-label"  for="brand">브랜드</label>
-      <div class="controls">
-        <input type="text" id="brand" name="brand" placeholder="" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
-      </div>
-    </div>
+ <div class="container">
+   <table  class="container">
+  <tr>
+      <td>모델명</td>
+      <td>
+                <!-- modelname -->
+          {{this.$store.state.modelName}}
+      </td>
+  </tr>
+  <tr>
+       <td>분류</td>
+      <td>
+                    <!-- sort -->
+           {{this.$store.state.sort}}
+      </td>
+  </tr>
+  <tr>
+       <td>대여가격</td>
+      <td>
+                <!-- price-->
+          <input type="text" id="price" name="price" placeholder="" v-model="price" class="input-xlarge">
+      </td>
+  </tr>
+  <tr>
+       <td>브랜드</td>
+      <td>
+            <!-- brand -->
+      {{this.$store.state.brand}}
+      </td>
+  </tr>
+  <tr>
+       <td>기어수</td>
+      <td>
+                <!-- gear -->
+       <input type="text" id="gear" name="gear" placeholder="" v-model="gear" class="input-xlarge">
+      </td>
+  </tr>
+    <tr>
+        <td>대여여부</td>
+        <td>
+        <!-- rent -->
+         <input type="text" id="rent" name="rent" placeholder="" v-model="rent" class="input-xlarge">
+        </td>
+    </tr>
+        <input type="button" style="float:right" class="btn btn-outline-secondary btn-sm" value="수정완료" @click="updatego">        
 
-    <div class="control-group">
-      <!-- gear -->
-      <label class="control-label"  for="gear">기어수</label>
-      <div class="controls">
-        <input type="text" id="gear" name="gear" placeholder="" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
-      </div>
+   </table>
+      
+       
     </div>
-
-    
-    <div class="control-group">
-      <!-- brand -->
-      <label class="control-label"  for="rent">대여유무</label>
-      <div class="controls">
-        <input type="text" id="rent" name="rent" placeholder="" class="input-xlarge">
-        <p class="help-block">Please confirm password</p>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <button class="btn btn-success">Register</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
       <Footer></Footer>
     </div>
 </template>
 <script>
 import Nav from '@/components/common/Nav.vue'
 import Footer from'@/components/common/Footer.vue'
+import axios from 'axios'
+import {store} from '../../store'
 export default {
+    data(){
+         return{
+             context : 'http://localhost:9000/cycles',
+             
+            
+             price : store.state.price,
+             gear : store.state.gear,
+             rent : store.state.rent
+
+         }
+    },
     components:{
         Nav,Footer
+    },
+    methods:{
+         updatego(e){
+               e.preventDefault();
+               alert('수정하러 고')
+              let data = {
+               
+                      price : this.price,
+                      gear : this.gear,
+                      rent : this.rent  
+              }
+              let headers = {
+                'Content-Type': 'application/json',
+                'Authorization' : 'JWT fefege..'
+              }
+            alert("id: "+this.$store.state.id)
+            alert("updatego price: "+data.price)
+            alert("updatego gear: "+data.gear)
+            alert("updatego rent: "+data.rent)
+
+            axios.put(`${this.context}/${this.$store.state.id}`, JSON.stringify(data), {headers:headers})
+                    .then(res=>{
+                        alert(`update성공 : ${res.result}`)
+                        this.$router.push("/CycleList")
+                        // this.$router.link(-1);
+                    })
+                    .catch(e=>{
+                        alert('에러')
+                    })
+        
+      }
     }
 }
 </script>

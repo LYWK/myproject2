@@ -1,45 +1,45 @@
 <template>
-    <div>
+    <div  style="font-size: 15px; color:black; text-align:center;">
       <Nav></Nav>
-<div class="container">
-   <table  class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
+<div class="container" >
+   <table  class="w3-table w3-bordered w3-striped w3-border test w3-hoverable" style="width: 25%; margin: 0 auto">
   <tr>
-      <th  scope="col">모델명</th>
+      <th class="w3-green" >모델명</th>
       <td>
                 <!-- modelname -->
-      {{this.$store.state.modelName}}
+            {{this.$store.state.modelName}}
       </td>
   </tr>
   <tr>
-       <th  scope="col">분류</th>
+       <th class="w3-green">분류</th>
       <td>
                     <!-- sort -->
       {{this.$store.state.sort}}
       </td>
   </tr>
   <tr>
-       <th  scope="col">대여가격</th>
+       <th class="w3-green">대여가격</th>
       <td>
                 <!-- price-->
       {{this.$store.state.price}}
       </td>
   </tr>
   <tr>
-       <th  scope="col">브랜드</th>
+       <th class="w3-green">브랜드</th>
       <td>
             <!-- brand -->
       {{this.$store.state.brand}}
       </td>
   </tr>
   <tr>
-       <th  scope="col">기어수</th>
+       <th class="w3-green">기어수</th>
       <td>
                 <!-- gear -->
       {{this.$store.state.gear}}
       </td>
   </tr>
     <tr>
-        <th  scope="col">대여여부</th>
+        <th class="w3-green">대여여부</th>
         <td>
         <!-- rent -->
         {{this.$store.state.rent}}
@@ -47,7 +47,7 @@
     </tr>
     <tr>
         
-            <td style="width:85%"><router-link to="/CycleModify">수정</router-link> | <span class="link" @click="deleteboard">삭제</span></td> 
+            <td><router-link to="/CycleModify">수정</router-link> | <span class="link" @click="deleteboard">입고</span></td> 
         
     </tr>
    </table>
@@ -93,6 +93,9 @@ export default {
 
 }
 </script>
-<style>
-
+ <style scoped>
+   .th {
+       width: 100px;
+   }
 </style>
+

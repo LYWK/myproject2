@@ -1,10 +1,8 @@
 <template>
 
   <div class="hello">
+      <Nav></Nav>
       
- 
-  
-     <Nav></Nav>
      <Footer></Footer>
     
   </div>

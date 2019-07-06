@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="font-size: 15px; color:black; text-align:center;">
 <Nav></Nav>
     <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
       <tbody>
@@ -14,7 +14,7 @@
       </tbody>
       <tbody>
        <tr v-for="item in CycleList" v-bind:key="item.id">
-            <td @click="detail(item)">{{item.modelName}}</td>
+            <td @click="detail(item)" >{{item.modelName}}</td>
             <td>{{item.sort}}</td>
             <td>{{item.price}}</td>
             <td>{{item.brand}}</td>

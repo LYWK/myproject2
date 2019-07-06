@@ -19,14 +19,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  
 }
 body, html {
   height: 100%;
 }
 .bg {
   /* The image used */
-  background-image: url("https://www.ifez.go.kr/humanframe/theme/tour/assets/images/content/img_cycle.jpg");
+  background-image: url("");
 
   /* Full height */
   height: 100%;

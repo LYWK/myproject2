@@ -2,75 +2,80 @@
     <div>
       <!-- @submit.prevent="regist" -->
       <Nav></Nav>
-  <fieldset>    
+  <b-container fluid>    
     <form class="form-horizontal" @submit.prevent="regist">
-    <div id="legend">
+    <div id="legend" style="font-size: 20px;">
       <legend class="">자전거등록</legend>
     </div>
-    <div class="control-group">
-      <!-- modelname -->
+    <div style="font-size: 15px; color:black; text-align:center;">
+    <!-- modelname -->
+    <b-row class="my-1">
+      <b-col sm="3">
       <label class="control-label"  for="modelname">모델명</label>
-      <div class="controls">
-        <input type="text" id="modelname" name="modelname" placeholder="" v-model="modelName" class="input-xlarge">
-        
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- sort -->
-      <label class="control-label" for="sort">분류</label>
-      <div class="controls">
-        <input type="text" id="sort" name="sort" placeholder="" v-model="sort" class="input-xlarge">
-      
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- price-->
-      <label class="control-label" for="price">대여가격</label>
-      <div class="controls">
-        <input type="text" id="price" name="price" placeholder="" v-model="price" class="input-xlarge">
-        
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- brand -->
-      <label class="control-label"  for="brand">브랜드</label>
-      <div class="controls">
-        <input type="text" id="brand" name="brand" placeholder="" v-model="brand" class="input-xlarge">
-     
-      </div>
-    </div>
+      </b-col>
+      <b-col sm="9">
+        <b-form-input  v-model="modelName" ></b-form-input>
+      </b-col>
+    </b-row>
 
-    <div class="control-group">
-      <!-- gear -->
-      <label class="control-label"  for="gear">기어수</label>
-      <div class="controls">
-        <input type="text" id="gear" name="gear" placeholder="" v-model="gear" class="input-xlarge">
-       
-      </div>
-    </div>
-
+    <!-- sort -->
+    <b-row class="my-1">
+      <b-col sm="3">
+      <label class="control-label" for="sort">분류</label></b-col>
+      <b-col sm="9">
+        <!-- <b-form-input  v-model="sort" class="input-xlarge"></b-form-input> -->
+        <b-form-select v-model="sort" :options="options1" style="font-size:15px;"></b-form-select>
+      </b-col>
+    </b-row>
     
+    <!-- price-->
+    <b-row class="my-1">
+      <b-col sm="3">
+      <label class="control-label" for="price">대여가격</label></b-col>
+      <b-col sm="9">
+        <b-form-input  v-model="price" class="input-xlarge" ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <!-- brand -->
+    <b-row class="my-1">
+      <b-col sm="3">  
+      <label class="control-label"  for="brand">브랜드</label></b-col>
+       <b-col sm="9">
+        <b-form-input  v-model="brand" class="input-xlarge"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <!-- gear -->
+    <b-row class="my-1">
+      <b-col sm="3">  
+      <label class="control-label"  for="gear">기어수</label></b-col>
+      <b-col sm="9">
+        <!-- <b-form-input  v-model="gear" class="input-xlarge"></b-form-input> -->
+        <b-form-select v-model="gear" :options="options2" style="font-size:15px;"></b-form-select>
+     </b-col>
+    </b-row>
+
+     <!-- brand -->
+    <b-row class="my-1">
+      <b-col sm="3">  
+      <label class="control-label"  for="rent">대여유무</label></b-col>
+      <b-col sm="9">
+        <b-form-select v-model="rent" :options="options" style="font-size:15px;"></b-form-select>
+        <!-- <b-form-input  v-model="rent" class="input-xlarge"></b-form-input> -->
+      </b-col>
+    </b-row>
+ 
+    <!-- Button -->
     <div class="control-group">
-      <!-- brand -->
-      <label class="control-label"  for="rent">대여유무</label>
       <div class="controls">
-        <input type="text" id="rent" name="rent" placeholder="" v-model="rent" class="input-xlarge">
-     
+        <b-button type="submit"   variant="primary">등록</b-button>
+        <b-button type="reset"   variant="danger">취소</b-button>
       </div>
     </div>
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <input type="submit" class="btn btn-success" value="등록">
-     <!-- @click="regist" -->
-      </div>
     </div>
     </form>
-  </fieldset>
+  </b-container>
 
       <Footer></Footer>
     </div>
@@ -90,13 +95,33 @@ export default {
     },
     data(){
        return {
+            rent: null,
+            options : [
+            { value: null, text: '선택하세요' },
+            { value: '대여가능', text: '대여가능' },
+            { value: '대여가능', text: '대여불가' },
+            ],
+            sort: null,
+            options1 : [
+            { value: null, text: '선택하세요' },
+            { value: 'MTB', text: 'MTB' },
+            { value: '로드바이크', text: '로드바이크' },
+            { value: '미니벨로', text: '미니벨로' },
+            ],
+            gear: null,
+            options2 : [
+            { value: null, text: '선택하세요' },
+            { value: '7단', text: '7단' },
+            { value: '21단', text: '21단' },
+            { value: '27단', text: '27단' },
+            ],
               context: 'http://localhost:9000/cycles',
               modelName:'',
-              sort:'',
+              // sort:'',
               price:'',
               brand:'',
-              gear:'',
-              rent:''
+              //gear:'',
+              //rent:''
        }
     },
     methods : {
@@ -133,6 +158,13 @@ export default {
    }
 </script>
 
-<style>
-
+<style scoped>
+   legend{
+     font-size: 20px;
+     color: black;
+   }
+   b-button{
+      font-size: 20px;
+   }
 </style>
+
